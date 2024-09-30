@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fietsen en Kleuren</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        button {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Fietsen en Kleuren</h1>
+
+        <!-- Sectie voor het toevoegen van een nieuwe kleur -->
+        <section>
+            <h2>Voeg een nieuwe kleur toe</h2>
+            <input type="text" id="kleurNaam" placeholder="Kleur naam">
+            <button onclick="addKleur()">Voeg Kleur Toe</button>
+        </section>
+
+        <!-- Sectie voor het toevoegen van een nieuwe fiets -->
+        <section>
+            <h2>Voeg een nieuwe fiets toe</h2>
+            <input type="text" id="fietsMerk" placeholder="Fiets merk">
+            <select id="kleurSelect"></select>
+            <button onclick="addFiets()">Voeg Fiets Toe</button>
+        </section>
+
+        <!-- Tabel voor bestaande kleuren -->
+        <section>
+            <h2>Beschikbare Kleuren</h2>
+            <table id="kleurenTable">
+                <thead>
+                    <tr>
+                        <th>Naam</th>
+                        <th>Acties</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Kleuren worden hier geladen -->
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Tabel voor bestaande fietsen -->
+        <section>
+            <h2>Beschikbare Fietsen</h2>
+            <table id="fietsenTable">
+                <thead>
+                    <tr>
+                        <th>Merk</th>
+                        <th>Kleur</th>
+                        <th>Acties</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Fietsen worden hier geladen -->
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+    <!-- Het JavaScript-bestand wordt hier geladen -->
+    <script src="app.js"></script>
+</body>
+</html>
