@@ -4,61 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fietsen en Kleuren</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        .container {
-            width: 80%;
-            margin: 0 auto;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-        table, th, td {
-            border: 1px solid #ddd;
-        }
-        th, td {
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-        button {
-            margin-right: 5px;
-        }
-    </style>
+    <!-- Add Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <div class="container">
-        <h1>Fietsen en Kleuren</h1>
+<body class="font-sans bg-gray-50">
+    <div class="container mx-auto px-4">
+        <h1 class="text-4xl font-bold my-6">Fietsen en Kleuren</h1>
 
         <!-- Sectie voor het toevoegen van een nieuwe kleur -->
-        <section>
-            <h2>Voeg een nieuwe kleur toe</h2>
-            <input type="text" id="kleurNaam" placeholder="Kleur naam">
-            <button onclick="addKleur()">Voeg Kleur Toe</button>
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold mb-4">Voeg een nieuwe kleur toe</h2>
+            <input type="text" id="kleurNaam" placeholder="Kleur naam" class="border border-gray-300 rounded px-4 py-2 mr-2">
+            <button onclick="addKleur()" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Voeg Kleur Toe</button>
         </section>
 
         <!-- Sectie voor het toevoegen van een nieuwe fiets -->
-        <section>
-            <h2>Voeg een nieuwe fiets toe</h2>
-            <input type="text" id="fietsMerk" placeholder="Fiets merk">
-            <select id="kleurSelect"></select>
-            <button onclick="addFiets()">Voeg Fiets Toe</button>
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold mb-4">Voeg een nieuwe fiets toe</h2>
+            <input type="text" id="fietsMerk" placeholder="Fiets merk" class="border border-gray-300 rounded px-4 py-2 mr-2">
+            <select id="kleurSelect" class="border border-gray-300 rounded px-4 py-2"></select>
+            <button onclick="addFiets()" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 mt-2">Voeg Fiets Toe</button>
         </section>
 
         <!-- Tabel voor bestaande kleuren -->
-        <section>
-            <h2>Beschikbare Kleuren</h2>
-            <table id="kleurenTable">
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold mb-4">Beschikbare Kleuren</h2>
+            <table id="kleurenTable" class="table-auto w-full border-collapse">
                 <thead>
-                    <tr>
-                        <th>Naam</th>
-                        <th>Acties</th>
+                    <tr class="bg-gray-200">
+                        <th class="border px-4 py-2 text-left">Naam</th>
+                        <th class="border px-4 py-2 text-left">Acties</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -69,13 +44,13 @@
 
         <!-- Tabel voor bestaande fietsen -->
         <section>
-            <h2>Beschikbare Fietsen</h2>
-            <table id="fietsenTable">
+            <h2 class="text-2xl font-semibold mb-4">Beschikbare Fietsen</h2>
+            <table id="fietsenTable" class="table-auto w-full border-collapse">
                 <thead>
-                    <tr>
-                        <th>Merkt</th>
-                        <th>Kleur</th>
-                        <th>Acties</th>
+                    <tr class="bg-gray-200">
+                        <th class="border px-4 py-2 text-left">Merk</th>
+                        <th class="border px-4 py-2 text-left">Kleur</th>
+                        <th class="border px-4 py-2 text-left">Acties</th>
                     </tr>
                 </thead>
                 <tbody>
