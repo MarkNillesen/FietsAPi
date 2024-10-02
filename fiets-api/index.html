@@ -37,7 +37,22 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Kleuren worden hier geladen -->
+                    <!-- Voorbeeld van hoe elke kleur eruit zal zien -->
+                    @foreach ($kleuren as $kleur)
+                    <tr>
+                        <td class="border px-4 py-2">{{ $kleur->naam }}</td>
+                        <td class="border px-4 py-2">
+                            <!-- Verwijderformulier voor kleuren -->
+                            <form action="{{ route('kleuren.destroy', $kleur->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
+                                    Verwijder
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </section>
@@ -54,7 +69,23 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Fietsen worden hier geladen -->
+                    <!-- Voorbeeld van hoe elke fiets eruit zal zien -->
+                    @foreach ($fietsen as $fiets)
+                    <tr>
+                        <td class="border px-4 py-2">{{ $fiets->merk }}</td>
+                        <td class="border px-4 py-2">{{ $fiets->kleur->naam ?? 'Onbekend' }}</td>
+                        <td class="border px-4 py-2">
+                            <!-- Verwijderformulier voor fietsen -->
+                            <form action="{{ route('fietsen.destroy', $fiets->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
+                                    Verwijder
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </section>

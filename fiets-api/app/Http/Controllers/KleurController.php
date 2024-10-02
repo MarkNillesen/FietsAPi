@@ -39,6 +39,6 @@ class KleurController extends Controller
     public function destroy(Kleur $kleur)
     {
         $kleur->delete();
-        return response()->noContent();
+        return redirect()->back()->with('success', 'Kleur succesvol verwijderd.');
     }
 }

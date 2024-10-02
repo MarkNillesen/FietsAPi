@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('fietsen', function (Blueprint $table) {
             $table->id();
-            $table->string('merk'); // merk van de fiets
-            $table->foreignId('kleur_id')->constrained('kleuren'); // foreign key naar de kleuren-tabel
+            $table->string('merk');
+            $table->foreignId('kleur_id')->constrained('kleuren');
             $table->timestamps();
         });
     }

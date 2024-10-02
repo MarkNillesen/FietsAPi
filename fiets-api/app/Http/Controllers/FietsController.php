@@ -42,6 +42,8 @@ class FietsController extends Controller
     public function destroy(Fiets $fiets)
     {
         $fiets->delete();
-        return response()->noContent();
+        return redirect()->back()->with('success', 'Fiets succesvol verwijderd.');
     }
+
+    
 }

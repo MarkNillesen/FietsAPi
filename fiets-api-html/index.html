@@ -1,66 +1,87 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fietsen en Kleuren</title>
-    <!-- Add Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { width: 60%; margin: auto; margin-top: 20px; }
+        th, td { padding: 10px; text-align: left; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #ddd; }
+    </style>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
-<body class="font-sans bg-gray-50">
-    <div class="container mx-auto px-4">
-        <h1 class="text-4xl font-bold my-6">Fietsen en Kleuren</h1>
+<body onload="loadData()">
+    <h1>Fietsen en Kleuren</h1>
 
-        <!-- Sectie voor het toevoegen van een nieuwe kleur -->
-        <section class="mb-8">
-            <h2 class="text-2xl font-semibold mb-4">Voeg een nieuwe kleur toe</h2>
-            <input type="text" id="kleurNaam" placeholder="Kleur naam" class="border border-gray-300 rounded px-4 py-2 mr-2">
-            <button onclick="addKleur()" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Voeg Kleur Toe</button>
-        </section>
+    <!-- Sectie voor kleuren -->
+    <h2>Kleuren</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Kleur</th>
+            </tr>
+        </thead>
+        <tbody id="kleurTabel">
+            <!-- Kleuren worden hier geladen -->
+        </tbody>
+    </table>
 
-        <!-- Sectie voor het toevoegen van een nieuwe fiets -->
-        <section class="mb-8">
-            <h2 class="text-2xl font-semibold mb-4">Voeg een nieuwe fiets toe</h2>
-            <input type="text" id="fietsMerk" placeholder="Fiets merk" class="border border-gray-300 rounded px-4 py-2 mr-2">
-            <select id="kleurSelect" class="border border-gray-300 rounded px-4 py-2"></select>
-            <button onclick="addFiets()" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 mt-2">Voeg Fiets Toe</button>
-        </section>
+    <!-- Sectie voor fietsen -->
+    <h2>Fietsen</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Merk</th>
+                <th>Kleur</th>
+            </tr>
+        </thead>
+        <tbody id="fietsTabel">
+            <!-- Fietsen worden hier geladen -->
+        </tbody>
+    </table>
 
-        <!-- Tabel voor bestaande kleuren -->
-        <section class="mb-8">
-            <h2 class="text-2xl font-semibold mb-4">Beschikbare Kleuren</h2>
-            <table id="kleurenTable" class="table-auto w-full border-collapse">
-                <thead>
-                    <tr class="bg-gray-200">
-                        <th class="border px-4 py-2 text-left">Naam</th>
-                        <th class="border px-4 py-2 text-left">Acties</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Kleuren worden hier geladen -->
-                </tbody>
-            </table>
-        </section>
-
-        <!-- Tabel voor bestaande fietsen -->
-        <section>
-            <h2 class="text-2xl font-semibold mb-4">Beschikbare Fietsen</h2>
-            <table id="fietsenTable" class="table-auto w-full border-collapse">
-                <thead>
-                    <tr class="bg-gray-200">
-                        <th class="border px-4 py-2 text-left">Merk</th>
-                        <th class="border px-4 py-2 text-left">Kleur</th>
-                        <th class="border px-4 py-2 text-left">Acties</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Fietsen worden hier geladen -->
-                </tbody>
-            </table>
-        </section>
-    </div>
-
-    <!-- Het JavaScript-bestand wordt hier geladen -->
-    <script src="app.js"></script>
+    <script>
+        const apiUrl = 'http://localhost:8000/api';  // Update deze naar jouw API locatie
+    
+        // Functie om fietsen en kleuren op te halen
+        function loadData() {
+            loadKleuren();
+            loadFietsen();
+        }
+    
+        // Laad kleuren en toon ze in de tabel
+        const loadKleuren = async () => {
+            try {
+                const response = await axios.get(`${apiUrl}/kleuren`);  // Let op het verwijderen van .php
+                const kleuren = response.data;
+                let kleurTabel = '';
+                kleuren.forEach(kleur => {
+                    kleurTabel += `<tr><td>${kleur.id}</td><td>${kleur.naam}</td></tr>`;
+                });
+                document.getElementById('kleurTabel').innerHTML = kleurTabel;
+            } catch (error) {
+                console.error('Er ging iets mis met het ophalen van kleuren:', error);
+            }
+        }
+    
+        // Laad fietsen en toon ze in de tabel
+        const loadFietsen = async () => {
+            try {
+                const response = await axios.get(`${apiUrl}/fietsen`);  // Verwijder .php
+                const fietsen = response.data;
+                let fietsTabel = '';
+                fietsen.forEach(fiets => {
+                    fietsTabel += `<tr><td>${fiets.id}</td><td>${fiets.merk}</td><td>${typeof fiets.kleur === 'object' ? (fiets.kleur?.naam || 'Geen kleur') : fiets.kleur}</td></tr>`;
+                });
+                document.getElementById('fietsTabel').innerHTML = fietsTabel;
+            } catch (error) {
+                console.error('Er ging iets mis met het ophalen van fietsen:', error);
+            }
+        }
+    </script>
 </body>
 </html>
