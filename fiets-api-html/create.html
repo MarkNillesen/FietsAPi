@@ -4,42 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Toevoegen van Fiets en Kleur</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <style>
-        body { width: 60%; margin: auto; margin-top: 20px; }
-        form { display: flex; flex-direction: column; margin-bottom: 20px; }
-        label, button { margin: 10px 0; }
-    </style>
 </head>
-<body>
-    <h1>Toevoegen van Fiets en Kleur</h1>
+<body class="bg-gray-100 min-h-screen flex flex-col items-center p-4">
+    <h1 class="text-3xl font-bold mb-6 text-gray-800">Toevoegen van Fiets en Kleur</h1>
     
     <!-- Formulier voor het toevoegen van een fiets -->
-    <h2>Fiets Toevoegen</h2>
-    <form id="addFietsForm">
-        <label for="fietsMerk">Fiets Merk:</label>
-        <input type="text" id="fietsMerk" name="fietsMerk" required>
+    <h2 class="text-xl font-semibold mb-4">Fiets Toevoegen</h2>
+    <form id="addFietsForm" class="w-full max-w-md bg-white p-6 rounded-lg shadow-md mb-6">
+        <div class="mb-4">
+            <label for="fietsMerk" class="block text-gray-700 font-medium mb-2">Fiets Merk:</label>
+            <input type="text" id="fietsMerk" name="fietsMerk" class="w-full px-3 py-2 border border-gray-300 rounded-lg" required>
+        </div>
 
-        <label for="fietsKleur">Kleur:</label>
-        <select id="fietsKleur" name="fietsKleur" required>
-            <!-- Dynamisch vullen met kleuren uit de database -->
-        </select>
+        <div class="mb-4">
+            <label for="fietsKleur" class="block text-gray-700 font-medium mb-2">Kleur:</label>
+            <select id="fietsKleur" name="fietsKleur" class="w-full px-3 py-2 border border-gray-300 rounded-lg" required>
+                <!-- Dynamisch vullen met kleuren uit de database -->
+            </select>
+        </div>
 
-        <button type="submit">Fiets Toevoegen</button>
+        <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg">Fiets Toevoegen</button>
     </form>
 
     <!-- Formulier voor het toevoegen van een kleur -->
-    <h2>Kleur Toevoegen</h2>
-    <form id="addKleurForm">
-        <label for="kleurNaam">Kleur Naam:</label>
-        <input type="text" id="kleurNaam" name="kleurNaam" required>
+    <h2 class="text-xl font-semibold mb-4">Kleur Toevoegen</h2>
+    <form id="addKleurForm" class="w-full max-w-md bg-white p-6 rounded-lg shadow-md mb-6">
+        <div class="mb-4">
+            <label for="kleurNaam" class="block text-gray-700 font-medium mb-2">Kleur Naam:</label>
+            <input type="text" id="kleurNaam" name="kleurNaam" class="w-full px-3 py-2 border border-gray-300 rounded-lg" required>
+        </div>
 
-        <button type="submit">Kleur Toevoegen</button>
+        <button type="submit" class="w-full bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-lg">Kleur Toevoegen</button>
     </form>
 
-    <button onclick="window.location.href='index.html'">Ga terug naar Index</button>
+    <button class="bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded-lg" 
+            onclick="window.location.href='index.html'">Ga terug naar Index</button>
 
     <script src="javascript/create.js"></script>
 </body>
 </html>
-

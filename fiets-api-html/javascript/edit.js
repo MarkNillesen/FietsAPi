@@ -13,17 +13,6 @@ if (type === 'kleur') {
     loadKleuren();
 }
 
-// Laad kleur voor bewerken
-async function loadKleur() {
-    try {
-        const response = await axios.get(`${apiUrl}/kleuren/${id}`);
-        const kleur = response.data;
-        document.getElementById('kleurNaam').value = kleur.naam;
-    } catch (error) {
-        console.error('Er ging iets mis bij het laden van de kleur:', error);
-    }
-}
-
 // Laad fiets voor bewerken
 async function loadFiets() {
     try {
@@ -35,35 +24,6 @@ async function loadFiets() {
         console.error('Er ging iets mis bij het laden van de fiets:', error);
     }
 }
-
-// Laad kleuren voor de select-optie in de fietsform
-async function loadKleuren() {
-    try {
-        const response = await axios.get(`${apiUrl}/kleuren`);
-        const kleuren = response.data;
-        let kleurSelect = '';
-        kleuren.forEach(kleur => {
-            kleurSelect += `<option value="${kleur.id}">${kleur.naam}</option>`;
-        });
-        document.getElementById('fietsKleur').innerHTML = kleurSelect;
-    } catch (error) {
-        console.error('Er ging iets mis bij het laden van de kleuren:', error);
-    }
-}
-
-// Opslaan van bewerkte kleur
-document.getElementById('editKleurForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const kleurNaam = document.getElementById('kleurNaam').value;
-
-    try {
-        const response = await axios.put(`${apiUrl}/kleuren/${id}`, { naam: kleurNaam });
-        alert('Kleur succesvol bijgewerkt');
-        window.location.href = 'index.html';
-    } catch (error) {
-        console.error('Er ging iets mis bij het updaten van de kleur:', error);
-    }
-});
 
 // Opslaan van bewerkte fiets
 document.getElementById('editFietsForm').addEventListener('submit', async (e) => {

@@ -4,32 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fietsen en Kleuren</title>
-    <style>
-        body { width: 60%; margin: auto; margin-top: 20px; }
-        th, td { padding: 10px; text-align: left; }
-        table { width: 100%; border-collapse: collapse; }
-        th, td { border: 1px solid #ddd; }
-    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
-<body onload="loadData()">
-    <h1>Fietsen en Kleuren</h1>
+<body class="bg-gray-100 min-h-screen flex flex-col items-center p-4" onload="loadData()">
+    <h1 class="text-3xl font-bold mb-6 text-gray-800">Fietsen en Kleuren</h1>
 
-    <h2>Fietsen</h2>
-    <button onclick="window.location.href='create.html?type=fiets'">Nieuwe Fiets Toevoegen</button>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Merk</th>
-                <th>Kleur</th>
-                <th>Acties</th>
-            </tr>
-        </thead>
-        <tbody id="fietsTabel">
-            <!-- Fietsen worden hier geladen -->
-        </tbody>
-    </table>
+    <h2 class="text-xl font-semibold mb-4">Fietsen</h2>
+    <button class="mb-4 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded" 
+            onclick="window.location.href='create.html?type=fiets'">
+        Nieuwe Fiets Toevoegen
+    </button>
+
+    <div class="w-full max-w-4xl">
+        <table class="table-auto w-full bg-white rounded-lg shadow-md">
+            <thead>
+                <tr class="bg-gray-200">
+                    <th class="px-4 py-2 text-left">ID</th>
+                    <th class="px-4 py-2 text-left">Merk</th>
+                    <th class="px-4 py-2 text-left">Kleur</th>
+                    <th class="px-4 py-2 text-left">Acties</th>
+                </tr>
+            </thead>
+            <tbody id="fietsTabel" class="divide-y divide-gray-200">
+                <!-- Fietsen worden hier geladen -->
+            </tbody>
+        </table>
+    </div>
+
     <script src="javascript/index.js"></script>
 </body>
 </html>

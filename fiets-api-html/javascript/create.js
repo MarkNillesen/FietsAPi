@@ -1,19 +1,5 @@
 const apiUrl = 'http://localhost:8000/api'; // Update deze naar jouw API locatie
 
-// Laad kleuren voor de fiets select
-const loadKleuren = async () => {
-    try {
-        const response = await axios.get(`${apiUrl}/kleuren`);
-        const kleuren = response.data;
-        let kleurSelect = '';
-        kleuren.forEach(kleur => {
-            kleurSelect += `<option value="${kleur.id}">${kleur.naam}</option>`;
-        });
-        document.getElementById('fietsKleur').innerHTML = kleurSelect;
-    } catch (error) {
-        console.error('Er ging iets mis bij het ophalen van kleuren:', error);
-    }
-};
 
 loadKleuren(); // Laad de kleuren bij het openen van de pagina
 

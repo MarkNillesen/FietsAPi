@@ -1,34 +1,57 @@
 <!DOCTYPE html>
 <html lang="nl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Item bewerken</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
-<body>
-    <h1>Bewerk Item</h1>
 
-    <div id="editKleurSection" style="display: none;">
-        <h2>Kleur bewerken</h2>
+<body class="bg-gray-100 min-h-screen flex flex-col items-center p-6">
+    <h1 class="text-3xl font-bold mb-6 text-gray-800">Bewerk Item</h1>
+
+    <!-- Section for editing color -->
+    <div id="editKleurSection" class="w-full max-w-md bg-white p-6 rounded-lg shadow-md mb-6 hidden">
+        <h2 class="text-xl font-semibold mb-4">Kleur bewerken</h2>
         <form id="editKleurForm">
-            <label for="kleurNaam">Kleur Naam:</label>
-            <input type="text" id="kleurNaam" name="kleurNaam" required>
-            <button type="submit">Opslaan</button>
+            <div class="mb-4">
+                <label for="kleurNaam" class="block text-gray-700 font-medium mb-2">Kleur Naam:</label>
+                <input type="text" id="kleurNaam" name="kleurNaam"
+                    class="w-full px-3 py-2 border border-gray-300 rounded-lg" required>
+            </div>
+            <button type="submit"
+                class="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg">Opslaan</button>
         </form>
     </div>
 
-    <div id="editFietsSection" style="display: none;">
-        <h2>Fiets bewerken</h2>
+    <!-- Section for editing bike -->
+    <div id="editFietsSection" class="w-full max-w-md bg-white p-6 rounded-lg shadow-md hidden">
+        <h2 class="text-xl font-semibold mb-4">Fiets bewerken</h2>
         <form id="editFietsForm">
-            <label for="fietsMerk">Fiets Merk:</label>
-            <input type="text" id="fietsMerk" name="fietsMerk" required>
-            <label for="fietsKleur">Kleur:</label>
-            <select id="fietsKleur" name="fietsKleur"></select>
-            <button type="submit">Opslaan</button>
+            <div class="mb-4">
+                <label for="fietsMerk" class="block text-gray-700 font-medium mb-2">Fiets Merk:</label>
+                <input type="text" id="fietsMerk" name="fietsMerk"
+                    class="w-full px-3 py-2 border border-gray-300 rounded-lg" required>
+            </div>
+
+            <div class="mb-4">
+                <label for="fietsKleur" class="block text-gray-700 font-medium mb-2">Kleur:</label>
+                <select id="fietsKleur" name="fietsKleur"
+                    class="w-full px-3 py-2 border border-gray-300 rounded-lg"></select>
+            </div>
+
+            <button type="submit"
+                class="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg">Opslaan</button>
         </form>
     </div>
 
+    <br>
+    
+    <button class="bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded-lg"
+        onclick="window.location.href='index.html'">Ga terug naar Index</button>
     <script src="javascript/edit.js"></script>
 </body>
+
 </html>
