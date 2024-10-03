@@ -9,12 +9,26 @@ class Fiets extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['merk', 'kleur_id'];
+    protected $fillable = ['naam', 'kleur_id'];
     
-    // Zet timestamps uit
-    public $timestamps = false;  // Dit zorgt ervoor dat 'created_at' en 'updated_at' niet automatisch worden beheerd
+    public $timestamps = false;
 
     public function kleur()
+    {
+        return $this->belongsTo(Kleur::class);
+    }
+
+    public function Geslacht()
+    {
+        return $this->belongsTo(Kleur::class);
+    }
+
+    public function Soort()
+    {
+        return $this->belongsTo(Kleur::class);
+    }
+
+    public function Merk()
     {
         return $this->belongsTo(Kleur::class);
     }
