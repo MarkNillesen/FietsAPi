@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\Kleur;
@@ -13,11 +14,15 @@ class KleurController extends Controller
 
     public function store(Request $request)
     {
+        // Valideer de inkomende aanvraag
         $request->validate([
             'naam' => 'required|string',
         ]);
 
-        return Kleur::create($request->all());
+        // Maak een nieuwe kleur aan
+        $kleur = Kleur::create($request->all());
+
+        return response()->json($kleur, 201); // Geef de nieuw aangemaakte kleur terug
     }
 
     public function show(Kleur $kleur)
@@ -25,20 +30,26 @@ class KleurController extends Controller
         return $kleur; // Haal een specifieke kleur op
     }
 
-    public function update(Request $request, Kleur $kleur)
+    public function update(Request $request, $id)
     {
-        $request->validate([
-            'naam' => 'required|string',
-        ]);
-
-        $kleur->update($request->all());
-
-        return $kleur;
+        $kleur = Kleur::find($id);
+        if ($kleur) {
+            $kleur->naam = $request->input('naam');
+            $kleur->save();
+            return response()->json(['message' => 'Kleur succesvol bijgewerkt.']);
+        } else {
+            return response()->json(['message' => 'Kleur niet gevonden.'], 404);
+        }
     }
 
-    public function destroy(Kleur $kleur)
+    public function destroy($id)
     {
-        $kleur->delete();
-        return redirect()->back()->with('success', 'Kleur succesvol verwijderd.');
+        $kleur = Kleur::find($id);
+        if ($kleur) {
+            $kleur->delete();
+            return response()->json(['message' => 'Kleur succesvol verwijderd.'], 200);
+        } else {
+            return response()->json(['message' => 'Kleur niet gevonden.'], 404);
+        }
     }
 }

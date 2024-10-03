@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toevoegen van Fiets en Kleur</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+        body { width: 60%; margin: auto; margin-top: 20px; }
+        form { display: flex; flex-direction: column; margin-bottom: 20px; }
+        label, button { margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <h1>Toevoegen van Fiets en Kleur</h1>
+    
+    <!-- Formulier voor het toevoegen van een fiets -->
+    <h2>Fiets Toevoegen</h2>
+    <form id="addFietsForm">
+        <label for="fietsMerk">Fiets Merk:</label>
+        <input type="text" id="fietsMerk" name="fietsMerk" required>
+
+        <label for="fietsKleur">Kleur:</label>
+        <select id="fietsKleur" name="fietsKleur" required>
+            <!-- Dynamisch vullen met kleuren uit de database -->
+        </select>
+
+        <button type="submit">Fiets Toevoegen</button>
+    </form>
+
+    <!-- Formulier voor het toevoegen van een kleur -->
+    <h2>Kleur Toevoegen</h2>
+    <form id="addKleurForm">
+        <label for="kleurNaam">Kleur Naam:</label>
+        <input type="text" id="kleurNaam" name="kleurNaam" required>
+
+        <button type="submit">Kleur Toevoegen</button>
+    </form>
+
+    <button onclick="window.location.href='index.html'">Ga terug naar Index</button>
+
+    <script>
+        const apiUrl = 'http://localhost:8000/api'; // Update deze naar jouw API locatie
+
+        // Laad kleuren voor de fiets select
+        const loadKleuren = async () => {
+            try {
+                const response = await axios.get(`${apiUrl}/kleuren`);
+                const kleuren = response.data;
+                let kleurSelect = '';
+                kleuren.forEach(kleur => {
+                    kleurSelect += `<option value="${kleur.id}">${kleur.naam}</option>`;
+                });
+                document.getElementById('fietsKleur').innerHTML = kleurSelect;
+            } catch (error) {
+                console.error('Er ging iets mis bij het ophalen van kleuren:', error);
+            }
+        };
+
+        loadKleuren(); // Laad de kleuren bij het openen van de pagina
+
+        // Event listener voor het toevoegen van een fiets
+        document.getElementById('addFietsForm').addEventListener('submit', async (event) => {
+            event.preventDefault(); // Voorkom standaard formulieractie
+            const fietsMerk = document.getElementById('fietsMerk').value;
+            const fietsKleur = document.getElementById('fietsKleur').value;
+
+            try {
+                await axios.post(`${apiUrl}/fietsen`, {
+                    merk: fietsMerk,
+                    kleur_id: fietsKleur
+                });
+                
+                // Redirect naar index na succesvol toevoegen van fiets
+                alert('De fiets is succesvol toegevoegd!');
+                window.location.href = 'index.html';
+            } catch (error) {
+                console.error('Fout bij het toevoegen van fiets. Controleer de console voor details.', error);
+            }
+        });
+
+        // Event listener voor het toevoegen van een kleur
+        document.getElementById('addKleurForm').addEventListener('submit', async (event) => {
+            event.preventDefault(); // Voorkom standaard formulieractie
+            const kleurNaam = document.getElementById('kleurNaam').value;
+
+            try {
+                await axios.post(`${apiUrl}/kleuren`, { naam: kleurNaam });
+                alert('De kleur is succesvol toegevoegd!');
+                // Redirect naar index na succesvol toevoegen van kleur
+                window.location.href = 'index.html'; 
+            } catch (error) {
+                console.error('Fout bij het toevoegen van kleur. Controleer de console voor details.', error);
+            }
+        });
+    </script>
+</body>
+</html>
+
