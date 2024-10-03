@@ -16,12 +16,13 @@ const loadFietsen = async () => {
         let fietsTabel = '';
         fietsen.forEach(fiets => {
             fietsTabel += `<tr>
-                        <td>${fiets.id}</td>
-                        <td>${fiets.merk}</td>
+                        <td>
+                            <a href="merkinfo.html?merk=${fiets.merk}" class="text-blue-500 hover:underline">${fiets.merk}</a>
+                        </td>
                         <td>${typeof fiets.kleur === 'object' ? (fiets.kleur?.naam || 'Geen kleur') : fiets.kleur}</td>
                         <td>
-                            <button onclick="window.location.href='edit.html?type=fiets&id=${fiets.id}'">Bewerken</button>
-                            <button onclick="deleteFiets(${fiets.id})">Verwijder</button>
+                            <button onclick="window.location.href='edit.html?type=fiets&id=${fiets.id}'" class="bg-yellow-500 hover:bg-yellow-600 text-white py-1 px-3 rounded">Bewerken</button>
+                            <button onclick="deleteFiets(${fiets.id})" class="bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded">Verwijder</button>
                         </td>
                     </tr>`;
         });
@@ -29,7 +30,7 @@ const loadFietsen = async () => {
     } catch (error) {
         console.error('Er ging iets mis met het ophalen van fietsen:', error);
     }
-}
+};
 
 // Verwijder fiets
 const deleteFiets = async (id) => {
