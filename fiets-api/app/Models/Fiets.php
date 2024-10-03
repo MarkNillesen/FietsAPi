@@ -9,28 +9,26 @@ class Fiets extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['naam', 'kleur_id'];
-    
-    public $timestamps = false;
+    protected $fillable = ['naam', 'kleur_id', 'soort_id', 'geslacht_id', 'merk_id'];
 
     public function kleur()
     {
         return $this->belongsTo(Kleur::class);
     }
 
-    public function Geslacht()
+    public function geslacht()
     {
-        return $this->belongsTo(Kleur::class);
+        return $this->belongsTo(Geslacht::class); // Dit moet het juiste model zijn
     }
 
-    public function Soort()
+    public function soort()
     {
-        return $this->belongsTo(Kleur::class);
+        return $this->belongsTo(Soort::class); // Dit moet het juiste model zijn
     }
 
-    public function Merk()
+    public function merk()
     {
-        return $this->belongsTo(Kleur::class);
+        return $this->belongsTo(Merk::class); // Dit moet het juiste model zijn
     }
 
     protected $table = 'fietsen';

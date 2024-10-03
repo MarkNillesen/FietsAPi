@@ -14,8 +14,8 @@
     <h2 class="text-xl font-semibold mb-4">Fiets Toevoegen</h2>
     <form id="addFietsForm" class="w-full max-w-md bg-white p-6 rounded-lg shadow-md mb-6">
         <div class="mb-4">
-            <label for="fietsMerk" class="block text-gray-700 font-medium mb-2">Fiets Merk:</label>
-            <input type="text" id="fietsMerk" name="fietsMerk" class="w-full px-3 py-2 border border-gray-300 rounded-lg" required>
+            <label for="naam" class="block text-gray-700 font-medium mb-2">Naam:</label>
+            <input type="text" id="naam" name="naam" class="w-full px-3 py-2 border border-gray-300 rounded-lg" required>
         </div>
 
         <div class="mb-4">
@@ -25,18 +25,28 @@
             </select>
         </div>
 
-        <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg">Fiets Toevoegen</button>
-    </form>
-
-    <!-- Formulier voor het toevoegen van een kleur -->
-    <h2 class="text-xl font-semibold mb-4">Kleur Toevoegen</h2>
-    <form id="addKleurForm" class="w-full max-w-md bg-white p-6 rounded-lg shadow-md mb-6">
         <div class="mb-4">
-            <label for="kleurNaam" class="block text-gray-700 font-medium mb-2">Kleur Naam:</label>
-            <input type="text" id="kleurNaam" name="kleurNaam" class="w-full px-3 py-2 border border-gray-300 rounded-lg" required>
+            <label for="fietsSoort" class="block text-gray-700 font-medium mb-2">Soort:</label>
+            <select id="fietsSoort" name="fietsSoort" class="w-full px-3 py-2 border border-gray-300 rounded-lg" required>
+                <!-- Dynamisch vullen met soorten uit de database -->
+            </select>
         </div>
 
-        <button type="submit" class="w-full bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-lg">Kleur Toevoegen</button>
+        <div class="mb-4">
+            <label for="fietsGeslacht" class="block text-gray-700 font-medium mb-2">Geslacht:</label>
+            <select id="fietsGeslacht" name="fietsGeslacht" class="w-full px-3 py-2 border border-gray-300 rounded-lg" required>
+                <!-- Dynamisch vullen met geslachten uit de database -->
+            </select>
+        </div>
+
+        <div class="mb-4">
+            <label for="merk" class="block text-gray-700 font-medium mb-2">Merk:</label>
+            <select id="merk" name="merk" class="w-full px-3 py-2 border border-gray-300 rounded-lg" required>
+                <!-- Dynamisch vullen met merken uit de database -->
+            </select>
+        </div>
+
+        <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg">Fiets Toevoegen</button>
     </form>
 
     <button class="bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded-lg" 

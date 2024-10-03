@@ -5,9 +5,6 @@ function loadData() {
     loadFietsen();
 }
 
-// Laad kleuren en toon ze in de tabel
-
-
 // Laad fietsen en toon ze in de tabel
 const loadFietsen = async () => {
     try {
@@ -17,9 +14,9 @@ const loadFietsen = async () => {
         fietsen.forEach(fiets => {
             fietsTabel += `<tr>
                         <td>
-                            <a href="fietsinfo.html?merk=${fiets.merk}" class="text-blue-500 hover:underline">${fiets.merk}</a>
+                            <a href="fietsinfo.html?merk=${fiets.merk}" class="text-blue-500 hover:underline">${fiets.naam}</a>
                         </td>
-                        <td>${typeof fiets.kleur === 'object' ? (fiets.kleur?.naam || 'Geen kleur') : fiets.kleur}</td>
+                        <td>${fiets.soort ? fiets.soort.naam : 'Geen soort'}</td>
                         <td>
                             <button onclick="window.location.href='edit.html?type=fiets&id=${fiets.id}'" class="bg-yellow-500 hover:bg-yellow-600 text-white py-1 px-3 rounded">Bewerken</button>
                             <button onclick="deleteFiets(${fiets.id})" class="bg-red-500 hover:bg-red-600 text-white py-1 px-3 rounded">Verwijder</button>
