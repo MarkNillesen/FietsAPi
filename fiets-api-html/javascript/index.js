@@ -17,7 +17,7 @@ const loadFietsen = async () => {
         fietsen.forEach(fiets => {
             fietsTabel += `<tr>
                         <td>
-                            <a href="merkinfo.html?merk=${fiets.merk}" class="text-blue-500 hover:underline">${fiets.merk}</a>
+                            <a href="fietsinfo.html?merk=${fiets.merk}" class="text-blue-500 hover:underline">${fiets.merk}</a>
                         </td>
                         <td>${typeof fiets.kleur === 'object' ? (fiets.kleur?.naam || 'Geen kleur') : fiets.kleur}</td>
                         <td>
