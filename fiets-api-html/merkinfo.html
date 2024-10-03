@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merk Details</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col items-center p-6">
+    <h1 class="text-3xl font-bold mb-6 text-gray-800">Merk Details</h1>
+
+    <!-- Merkdetails Container -->
+    <div id="merkDetails" class="w-full max-w-4xl bg-white p-6 rounded-lg shadow-lg">
+        <!-- Merkdetails worden hier geladen -->
+        <p class="text-gray-500">Merkgegevens worden geladen...</p>
+    </div>
+
+    <!-- Terug naar Index knop -->
+    <button class="mt-6 bg-gray-500 text-white py-2 px-4 rounded-lg"
+        onclick="window.location.href='index.html'">
+        Ga terug naar Index
+    </button>
+
+    <!-- Verwijzing naar het merkinfo.js script -->
+    <script src="javascript/merkinfo.js"></script>
+</body>
+</html>
