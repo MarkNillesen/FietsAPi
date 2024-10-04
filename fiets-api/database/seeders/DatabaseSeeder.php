@@ -13,6 +13,7 @@ class DatabaseSeeder extends Seeder
             MerkSeeder::class,
             SoortSeeder::class,
             GeslachtSeeder::class,
+            FietsSeeder::class,
         ]);
     }
 }

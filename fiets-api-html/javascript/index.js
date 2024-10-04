@@ -14,7 +14,7 @@ const loadFietsen = async () => {
         fietsen.forEach(fiets => {
             fietsTabel += `<tr>
                         <td>
-                            <a href="fietsinfo.html?merk=${fiets.merk}" class="text-blue-500 hover:underline">${fiets.naam}</a>
+                            <a href="fietsinfo.html?id=${fiets.id}" class="text-blue-500 hover:underline">${fiets.naam}</a>
                         </td>
                         <td>${fiets.soort ? fiets.soort.naam : 'Geen soort'}</td>
                         <td>
@@ -40,4 +40,4 @@ const deleteFiets = async (id) => {
             console.error('Er ging iets mis met het verwijderen van fiets:', error);
         }
     }
-}
+};
