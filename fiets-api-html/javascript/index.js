@@ -41,3 +41,39 @@ const deleteFiets = async (id) => {
         }
     }
 };
+
+// Controleer de inlogstatus
+function checkLoginStatus() {
+    // Controleer of de gebruiker is ingelogd via localStorage
+    const accessToken = localStorage.getItem('access_token');
+    const userMenu = document.getElementById('userMenu');
+
+    if (accessToken) {
+        // Haal de gebruikersnaam op als de gebruiker is ingelogd
+        const username = localStorage.getItem('username') || 'Gebruiker'; // Vervang 'Gebruiker' door je default waarde
+
+        // Toon de gebruikersnaam en uitlogknop
+        userMenu.innerHTML = `
+            <span class="text-white mr-4">Welkom, ${username}</span>
+            <button class="bg-red-500 text-white py-2 px-4 rounded-lg" onclick="logout()">Uitloggen</button>
+        `;
+    } else {
+        // Toon de login- en registratietoetsen als de gebruiker niet is ingelogd
+        userMenu.innerHTML = `
+            <button class="bg-white text-blue-600 hover:bg-gray-100 font-semibold py-2 px-4 rounded-lg"
+                onclick="window.location.href='login.html'">
+                Login
+            </button>
+            <button class="bg-white text-blue-600 hover:bg-gray-100 font-semibold py-2 px-4 rounded-lg ml-2"
+                onclick="window.location.href='register.html'">
+                Registreren
+            </button>
+        `;
+    }
+}
+
+function logout() {
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('username');
+    location.reload();
+}

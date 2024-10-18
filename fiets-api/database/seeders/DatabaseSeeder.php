@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
             SoortSeeder::class,
             GeslachtSeeder::class,
             FietsSeeder::class,
+            UserSeeder::class,
         ]);
     }
 }

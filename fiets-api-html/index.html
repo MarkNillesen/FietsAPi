@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="nl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,12 +8,22 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
-<body class="bg-gray-100 min-h-screen flex flex-col items-center p-4" onload="loadData()">
-    <h1 class="text-3xl font-bold mb-6 text-gray-800">Fietsen en Kleuren</h1>
+
+<body class="bg-gray-100 min-h-screen flex flex-col items-center p-4" onload="loadData(); checkLoginStatus();">
+    
+    <!-- User Menu Section -->
+    <div id="userMenu" class="w-full max-w-6xl mx-auto flex justify-end mb-4"></div>
+
+    <!-- Header Section -->
+    <header class="w-full bg-blue-600 py-4 mb-6 shadow-lg">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <h1 class="text-3xl font-bold text-white">Fietsen</h1>
+        </div>
+    </header>
 
     <h2 class="text-xl font-semibold mb-4">Fietsen</h2>
-    <button class="mb-4 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded" 
-            onclick="window.location.href='create.html?type=fiets'">
+    <button class="mb-4 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded"
+        onclick="window.location.href='create.html?type=fiets'">
         Nieuwe Fiets Toevoegen
     </button>
 
@@ -33,4 +44,5 @@
 
     <script src="javascript/index.js"></script>
 </body>
+
 </html>
